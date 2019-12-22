@@ -98,20 +98,32 @@ class SLIRBetbot(object):
         bet_value = data.GetParam(2)
         bet_state.add_bet(data.UserName, 'win', bet_value, multiplier)
 
+        message = "Thank you for betting on {}!".format(self.iracing_user)
+        self.parent.SendStreamWhisper(data.UserName, message)
+
     def top5(self, data):
         multiplier = self.top5_multiplier()
         bet_value = data.GetParam(2)
         bet_state.add_bet(data.UserName, 'top5', bet_value, multiplier)
+
+        message = "Thank you for betting on {}!".format(self.iracing_user)
+        self.parent.SendStreamWhisper(data.UserName, message)
 
     def finish(self, data):
         multiplier = self.finish_multiplier()
         bet_value = data.GetParam(2)
         bet_state.add_bet(data.UserName, 'finish', bet_value, multiplier)
 
+        message = "Thank you for betting on {}....".format(self.iracing_user)
+        self.parent.SendStreamWhisper(data.UserName, message)
+
     def crash(self, data):
         multiplier = self.finish_multiplier()
         bet_value = data.GetParam(2)
         bet_state.add_bet(data.UserName, 'crash', bet_value, multiplier)
+
+        message = "Thank you for betting against {}....".format(self.iracing_user)
+        self.parent.SendStreamWhisper(data.UserName, message)
 
     # Whispers the top 5 currency holders
     def stats(self, data):
